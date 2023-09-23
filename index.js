@@ -76,7 +76,10 @@ function reply_click(e) {
                 document.getElementById("r" + curRow + "c" + j).style.animationName = 'turn_to_gray'; //gray
                 document.getElementById("r" + curRow + "c" + j).style.animationDuration = '1s'; //animation
                 document.getElementById("r" + curRow + "c" + j).style.animationFillMode = 'forwards'; //animation
-                document.getElementById(cursor.getWord()[j]).className = 'deactivated'; //!!! STILL WORKING ON IT !!!
+                if (!splitMysteryWordArray(mysteryWord).includes(cursor.getWord()[j])) {
+                    document.getElementById(cursor.getWord()[j]).className = 'deactivated';
+                }
+                
             }
         }
 
