@@ -1,0 +1,220 @@
+body { 
+    text-align: center;
+    font-family: "Roboto";
+    background: radial-gradient(circle, rgba(66, 73, 110, 0.895) 0%, rgba(6, 5, 43, 0.735) 100%);
+}
+
+.center {
+    display: inline-block;
+    width: 50%;
+    padding: 10px;
+}
+
+#keyboard {
+    margin-top: 1%;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.guess_box {
+    height: 2.5rem;
+    width: 2.5rem;
+    padding: 0.438rem;
+    margin: 0.625rem;
+    border-radius: 0.313rem;
+
+    background-color: azure;
+
+    font-weight: bolder;
+    font-size: 2.1rem;
+}
+
+
+@keyframes turn_to_green {
+    from {background-color: azure;}
+    to {background-color: #46DE49;}
+}
+
+@keyframes turn_to_yellow {
+    from {background-color: azure;}
+    to {background-color: #DED43F;}
+}
+
+@keyframes turn_to_gray {
+    from {background-color: azure;}
+    to {background-color: #CCCCCC;}
+}
+
+button {
+    padding: 0.938rem;
+    margin: 0.125rem;
+    margin-top: 0.625rem;
+    font-size: 1.1rem;
+
+    font-weight: bold;
+    color: #95bfc7;
+    background-color: #301A4B;
+    border-radius: 0.313rem;
+    border: none;
+}
+
+@keyframes color_change_hover_on {
+    from {background-color: #301A4B;}
+    to {background-color: #483065;}
+}
+
+@keyframes color_change_hover_off {
+    from {background-color: #483065;}
+    to {background-color: #301A4B;}
+}
+
+@keyframes deactivated_color_change_hover_on {
+    from {background-color: #9e9e9e;}
+    to {background-color: #d1d1d1;}
+}
+
+@keyframes deactivated_color_change_hover_off {
+    from {background-color: #d1d1d1;}
+    to {background-color: #9e9e9e;}
+}
+
+.deactivated:hover {
+    animation-name: deactivated_color_change_hover_on;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
+
+.deactivated:not(:hover) {
+    animation-name: deactivated_color_change_hover_off;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
+
+button:hover {
+    animation-name: color_change_hover_on;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
+
+button:not(:hover) {
+    animation-name: color_change_hover_off;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
+
+
+.modal {
+    display: none;
+    justify-content: center;
+
+    position:absolute;
+    z-index: 1;
+    overflow: auto;
+    left: 37.5%;
+    top: 10%;
+    width: 25%;
+    height: 60%;
+    background-color: #1d0f2e;
+
+    border-radius: 1.875rem;
+    box-shadow: 0px 0px 20px;
+}
+
+.modalContent {
+    margin: 10% auto;
+    margin-top: 28%;
+    padding: 1rem;
+
+    font-family: "Roboto";
+    color: azure;
+    font-size: large;
+    font-weight: bold;
+    
+}
+
+.modalContent #mysteryWord {
+    font-size:x-large;
+    font-weight:bolder;
+}
+
+.modalContent #winLoseText {
+    margin-top: 2rem;
+    font-family: "Roboto";
+    color: rgb(56, 110, 246);
+    font-size:xx-large;
+    font-weight:bolder;
+}
+
+@keyframes animate_top {
+    from {top: -300px; opacity: 0}
+    to {top: 10%; opacity: 1}
+  }
+
+@keyframes cover_screen {
+    from {opacity: 0;}
+    to {opacity: 0.15;}
+}
+
+#coverScreen {
+    display: none;
+
+    position:absolute;
+    z-index: 1;
+    color: black;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+
+    background-color: black;
+}
+
+@keyframes set_to_dark_mode {
+    0% {
+        background: radial-gradient(circle, rgba(120,133,194,0.5215336134453781) 0%, rgba(23,109,154,0.6671918767507004) 100%);
+    }
+    100% {
+        background: radial-gradient(circle, rgba(66, 73, 110, 0.895) 0%, rgba(6, 5, 43, 0.735) 100%);
+    }
+}
+
+@keyframes set_to_light_mode {
+    0% {
+        background: radial-gradient(circle, rgba(66, 73, 110, 0.895) 0%, rgba(6, 5, 43, 0.735) 100%);
+        }
+    100% {
+        background: radial-gradient(circle, rgba(120,133,194,0.5215336134453781) 0%, rgba(23,109,154,0.6671918767507004) 100%);
+        }
+}
+
+body.dark-mode {
+    animation: set_to_dark_mode 2s linear forwards;
+}
+
+body.light-mode {
+    animation: set_to_light_mode 2s linear forwards;
+}
+
+
+
+#dark_light_mode {
+    font-size: xx-large;
+}
+
+#dark_light_mode:hover {
+    cursor: pointer;
+}
+
+#options_buttons {
+    display: inline-block;
+    position: absolute;
+    top: 2rem;
+    right: 15rem;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.662);
+}
+
