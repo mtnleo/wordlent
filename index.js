@@ -181,29 +181,33 @@ options_div.appendChild(newOptionButton);
 
 
 // fetch to an api
-
-const data = null;
+const api_url = 'https://random-words5.p.rapidapi.com/getRandom?wordLength=5';
 let mysteryWord = null;
 
-const xhr = new XMLHttpRequest();
-xhr.withCredentials = true;
-
-xhr.addEventListener('readystatechange', function () {
-	if (this.readyState === this.DONE) {
-		mysteryWord = this.responseText;
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'e8c30f1820mshc210abe883c5745p10fa00jsn57b3fbae7da2',
+		'X-RapidAPI-Host': 'random-words5.p.rapidapi.com'
 	}
-});
+};
 
-xhr.open('GET', 'https://random-words5.p.rapidapi.com/getRandom?wordLength=5');
-xhr.setRequestHeader('X-RapidAPI-Key', 'e8c30f1820mshc210abe883c5745p10fa00jsn57b3fbae7da2');
-xhr.setRequestHeader('X-RapidAPI-Host', 'random-words5.p.rapidapi.com');
+const getApi = async(api_url) => {
+    try {
+        const response = await fetch(api_url, options);
+        const result = await response.text();
+        mysteryWord = result;   
+    }
+    catch (error) {
+        console.log("Error al devolver la API: ", error);
+    }
+}
 
-xhr.send(data);
+document.addEventListener("DOMContentLoaded", getApi(api_url));
 
 function getMysteryWord() {
     return mysteryWord;
 }
-
 // get if word exists
 
 //
