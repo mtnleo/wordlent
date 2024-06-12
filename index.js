@@ -1,13 +1,25 @@
-
 // importing the Cursor class to control the keyboard and guesses
 import {Cursor} from "./Cursor.js"
+// Words credit: CFreshman on GitHub: <script src="https://gist.github.com/cfreshman/a7b776506c73284511034e63af1017ee.js"></script>
 
+
+const allowedWords = getJson();
 const keyboard = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", " ",
                  "a", "s", "d", "f", "g", "h", "j", "k", "l", " ",
                  "Enter", "z", "x", "c", "v", "b", "n", "m", "Remove", " "];
 const containers = ["top_row_kb", "mid_row_kb", "btm_row_kb"];
 
 const cursor = new Cursor();
+
+// get allowed words
+async function getJson() {
+    const response = await fetch("words.json");
+    const words = await response.json();
+
+    return words
+}
+
+
 
 // building the keyboard ---------------------------
 let i = 0;
