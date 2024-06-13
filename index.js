@@ -3,7 +3,7 @@ import {Cursor} from "./Cursor.js"
 // Words credit: CFreshman on GitHub: <script src="https://gist.github.com/cfreshman/a7b776506c73284511034e63af1017ee.js"></script>
 
 
-const allowedWords = getJson();
+const allowedWords = await getJson();
 const keyboard = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", " ",
                  "a", "s", "d", "f", "g", "h", "j", "k", "l", " ",
                  "Enter", "z", "x", "c", "v", "b", "n", "m", "Remove", " "];
@@ -18,7 +18,6 @@ async function getJson() {
 
     return words
 }
-
 
 
 // building the keyboard ---------------------------
@@ -51,6 +50,14 @@ function checkWin(colorArray) {
     }
 }
 
+function arrayToString(myArray) {
+    let retString = "";
+    for(let i = 0; i < myArray.length; i++) {
+        retString += myArray[i];
+    }
+    return retString;
+}
+
 // get the value of the button that's getting clicked
 function reply_click(e) {
     
@@ -65,70 +72,83 @@ function reply_click(e) {
         document.getElementById("r" + cursor.getRow() + "c" + cursor.getColumn()).innerText = "";
     }
     else if (e == "Enter" && cursor.getWord().length == 5) {
-        // dictionary api github.com/meetDeveloper/freeDictionaryAPI
-        //got to check first if word exists,
-        // I can do so by adding the words api and asking it to retrieve the word
-        // if code is 404 then the word doesn't exist
-        
-        //then:
-        let colorArray = checkWordSent(cursor.getWord(), getMysteryWord()); 
-        let curRow = cursor.getRow();
+        console.log(allowedWords.includes(arrayToString(cursor.getWord())));
+        if(allowedWords.includes(arrayToString(cursor.getWord()))) {
 
-        for (let j = 0; j < 5; j++) {
-            if (colorArray[j] == "green") {
-                document.getElementById("r" + curRow + "c" + j).style.animationName = 'turn_to_green'; //green
-                document.getElementById("r" + curRow + "c" + j).style.animationDuration = '1s'; //animation
-                document.getElementById("r" + curRow + "c" + j).style.animationFillMode = 'forwards'; //animation
-            }
-            else if (colorArray[j] == "yellow") {
-                document.getElementById("r" + curRow + "c" + j).style.animationName = 'turn_to_yellow'; //yellow
-                document.getElementById("r" + curRow + "c" + j).style.animationDuration = '1s'; //animation
-                document.getElementById("r" + curRow + "c" + j).style.animationFillMode = 'forwards'; //animation
-            } else {
-                document.getElementById("r" + curRow + "c" + j).style.animationName = 'turn_to_gray'; //gray
-                document.getElementById("r" + curRow + "c" + j).style.animationDuration = '1s'; //animation
-                document.getElementById("r" + curRow + "c" + j).style.animationFillMode = 'forwards'; //animation
-                if (!splitMysteryWordArray(mysteryWord).includes(cursor.getWord()[j])) {
-                    document.getElementById(cursor.getWord()[j]).className = 'deactivated';
+            //then:
+            let colorArray = checkWordSent(cursor.getWord(), getMysteryWord()); 
+            let curRow = cursor.getRow();
+
+            for (let j = 0; j < 5; j++) {
+                if (colorArray[j] == "green") {
+                    document.getElementById("r" + curRow + "c" + j).style.animationName = 'turn_to_green'; //green
+                    document.getElementById("r" + curRow + "c" + j).style.animationDuration = '1s'; //animation
+                    document.getElementById("r" + curRow + "c" + j).style.animationFillMode = 'forwards'; //animation
                 }
-                
+                else if (colorArray[j] == "yellow") {
+                    document.getElementById("r" + curRow + "c" + j).style.animationName = 'turn_to_yellow'; //yellow
+                    document.getElementById("r" + curRow + "c" + j).style.animationDuration = '1s'; //animation
+                    document.getElementById("r" + curRow + "c" + j).style.animationFillMode = 'forwards'; //animation
+                } else {
+                    document.getElementById("r" + curRow + "c" + j).style.animationName = 'turn_to_gray'; //gray
+                    document.getElementById("r" + curRow + "c" + j).style.animationDuration = '1s'; //animation
+                    document.getElementById("r" + curRow + "c" + j).style.animationFillMode = 'forwards'; //animation
+                    if (!splitMysteryWordArray(mysteryWord).includes(cursor.getWord()[j])) {
+                        document.getElementById(cursor.getWord()[j]).className = 'deactivated';
+                    }
+                    
+                }
+            }
+
+            cursor.setColumn(0);
+            cursor.deleteWord();
+            cursor.increaseRow();
+
+            if(checkWin(colorArray)) {
+                document.getElementById("coverScreen").style.display = "inline-flex";
+                document.getElementById("coverScreen").style.animationName = "cover_screen";
+                document.getElementById("coverScreen").style.animationDuration = "1s";
+                document.getElementById("coverScreen").style.animationFillMode = "forwards";
+
+                document.getElementById("scoreModal").style.display = "inline-flex";
+                document.getElementById("scoreModal").style.animationName = "animate_top";
+                document.getElementById("scoreModal").style.animationDuration = "1s";
+                document.getElementById("scoreModal").style.animationFillMode = "forwards";
+
+                document.getElementById("mysteryWord").innerText = getMysteryWord().toUpperCase();
+                document.getElementById("winLoseText").style.color = "green";
+                document.getElementById("winLoseText").innerText = "You win!";
+            } else if(cursor.getRow() > 6) {
+                document.getElementById("coverScreen").style.display = "inline-flex";
+                document.getElementById("coverScreen").style.animationName = "cover_screen";
+                document.getElementById("coverScreen").style.animationDuration = "1s";
+                document.getElementById("coverScreen").style.animationFillMode = "forwards";
+
+                document.getElementById("scoreModal").style.display = "inline-flex";
+                document.getElementById("scoreModal").style.animationName = "animate_top";
+                document.getElementById("scoreModal").style.animationDuration = "1s";
+                document.getElementById("scoreModal").style.animationFillMode = "forwards";
+
+                document.getElementById("mysteryWord").innerText = getMysteryWord().toUpperCase();
+                document.getElementById("winLoseText").style.color = "red";
+                document.getElementById("winLoseText").innerText = "You lose!";
             }
         }
+        else {
+            // IF THE WORD IS WRONG
+            let curRow = cursor.getRow();
+            console.log("RED");
 
-        cursor.setColumn(0);
-        cursor.deleteWord();
-        cursor.increaseRow();
+            for(let i = 0; i < 5; i++) {
+                document.getElementById("r" + curRow + "c" + i).style.animationName = 'turn_to_red'; //green
+                document.getElementById("r" + curRow + "c" + i).style.animationDuration = '3s'; //animation
+                document.getElementById("r" + curRow + "c" + i).style.animationFillMode = 'forwards'; //animation
 
-        if(checkWin(colorArray)) {
-            document.getElementById("coverScreen").style.display = "inline-flex";
-            document.getElementById("coverScreen").style.animationName = "cover_screen";
-            document.getElementById("coverScreen").style.animationDuration = "1s";
-            document.getElementById("coverScreen").style.animationFillMode = "forwards";
-
-            document.getElementById("scoreModal").style.display = "inline-flex";
-            document.getElementById("scoreModal").style.animationName = "animate_top";
-            document.getElementById("scoreModal").style.animationDuration = "1s";
-            document.getElementById("scoreModal").style.animationFillMode = "forwards";
-
-            document.getElementById("mysteryWord").innerText = getMysteryWord().toUpperCase();
-            document.getElementById("winLoseText").style.color = "green";
-            document.getElementById("winLoseText").innerText = "You win!";
-        } else if(cursor.getRow() > 6) {
-            document.getElementById("coverScreen").style.display = "inline-flex";
-            document.getElementById("coverScreen").style.animationName = "cover_screen";
-            document.getElementById("coverScreen").style.animationDuration = "1s";
-            document.getElementById("coverScreen").style.animationFillMode = "forwards";
-
-            document.getElementById("scoreModal").style.display = "inline-flex";
-            document.getElementById("scoreModal").style.animationName = "animate_top";
-            document.getElementById("scoreModal").style.animationDuration = "1s";
-            document.getElementById("scoreModal").style.animationFillMode = "forwards";
-
-            document.getElementById("mysteryWord").innerText = getMysteryWord().toUpperCase();
-            document.getElementById("winLoseText").style.color = "red";
-            document.getElementById("winLoseText").innerText = "You lose!";
+                document.getElementById("r" + curRow + "c" + i).style.animationName = 'turn_to_azure'; //green
+                document.getElementById("r" + curRow + "c" + i).style.animationDuration = '2s'; //animation
+                document.getElementById("r" + curRow + "c" + i).style.animationFillMode = 'forwards'; //animation
+            }
         }
-
     }
     
     console.log(cursor.getColumn());

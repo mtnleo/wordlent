@@ -49,6 +49,16 @@ body {
     to {background-color: #CCCCCC;}
 }
 
+@keyframes turn_to_red {
+    from {background-color: azure;}
+    to {background-color: #ff3434;}
+}
+
+@keyframes turn_to_azure {
+    from {background-color: #ff3434;}
+    to {background-color: azure;}
+}
+
 button {
     padding: 0.938rem;
     margin: 0.125rem;
