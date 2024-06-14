@@ -226,20 +226,30 @@ const options = {
 
 const getApi = async(api_url) => {
     try {
-        const response = await fetch(api_url, options);
-        const result = await response.text();
-        mysteryWord = result;   
+        let exists = false;
+        while (!exists) {
+            const response = await fetch(api_url, options);
+            const result = await response.text();
+            mysteryWord = result;  
+            console.log(mysteryWord); 
+
+            if(allowedWords.includes(mysteryWord)) {
+                exists = true;
+            }
+        }
     }
     catch (error) {
-        console.log("Error al devolver la API: ", error);
+        console.log("Error retrieving API: ", error);
     }
 }
 
 document.addEventListener("DOMContentLoaded", getApi(api_url));
 
+
 function getMysteryWord() {
     return mysteryWord;
 }
+
 // get if word exists
 
 //
