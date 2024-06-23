@@ -4,6 +4,9 @@ body {
     background: radial-gradient(circle, rgba(66, 73, 110, 0.895) 0%, rgba(6, 5, 43, 0.735) 100%);
 }
 
+.general_container {
+}
+
 #keyboard {
     margin-top: 1%;
 }
@@ -121,7 +124,7 @@ button:not(:hover) {
     left: 37.5%;
     top: 10%;
     width: 25%;
-    height: 60%;
+    height: 45%;
     background-color: #1d0f2e;
 
     border-radius: 1.875rem;
@@ -222,9 +225,20 @@ body.light-mode {
     text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.662);
 }
 
+@media (max-width: 1000px) {
+    .modal {
+        width: 45%;
+    }
+}
+
 @media (max-width: 650px) {
     .container {
         gap: 4px;
+    }
+
+    #options_buttons {
+        top: 2rem;
+        right: 2.5rem;
     }
 }
 
@@ -238,17 +252,43 @@ body.light-mode {
         font-size: 1.8rem;
     }
 
-
     button {
         padding: 0.8rem;
         margin: 0.125rem;
         margin-top: 0.625rem;
         font-size: 0.9rem;
+    }
 
-        font-weight: bold;
-        color: #95bfc7;
-        background-color: #301A4B;
+    #options_buttons {
+        top: 2rem;
+        right: 1.5rem;
+    }
+}
+
+@media (max-width: 450px) {
+    .guess_box {
+        height: 1.5rem;
+        width: 1.5rem;
+        padding: 0.438rem;
+        margin: 0.625rem;
         border-radius: 0.313rem;
-        border: none;
+        font-size: 1.35rem;
+    }
+
+    .container {
+        gap: 2px;
+    }
+
+    button {
+        padding: 0.5rem;
+        margin: 0.1rem;
+        margin-top: 0.625rem;
+        font-size: 0.9rem;
+    }
+
+    #options_buttons {
+        display: none;
+        top: 2rem;
+        right: 2.5rem;
     }
 }

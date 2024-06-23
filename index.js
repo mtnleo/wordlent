@@ -72,7 +72,6 @@ function reply_click(e) {
         document.getElementById("r" + cursor.getRow() + "c" + cursor.getColumn()).innerText = "";
     }
     else if (e == "Enter" && cursor.getWord().length == 5) {
-        console.log(allowedWords.includes(arrayToString(cursor.getWord())));
         if(allowedWords.includes(arrayToString(cursor.getWord()))) {
 
             //then:
@@ -137,7 +136,6 @@ function reply_click(e) {
         else {
             // IF THE WORD IS WRONG
             let curRow = cursor.getRow();
-            console.log("RED");
 
             for(let i = 0; i < 5; i++) {
                 document.getElementById("r" + curRow + "c" + i).style.animationName = 'turn_to_red'; //green
@@ -151,8 +149,6 @@ function reply_click(e) {
         }
     }
     
-    console.log(cursor.getColumn());
-    console.log(cursor.getWord());
 }
 
 // CREATE THE GUESS BOXES
@@ -231,7 +227,6 @@ const getApi = async(api_url) => {
             const response = await fetch(api_url, options);
             const result = await response.text();
             mysteryWord = result;  
-            console.log(mysteryWord); 
 
             if(allowedWords.includes(mysteryWord)) {
                 exists = true;
@@ -239,7 +234,7 @@ const getApi = async(api_url) => {
         }
     }
     catch (error) {
-        console.log("Error retrieving API: ", error);
+        console.error("Error retrieving API: ", error);
     }
 }
 

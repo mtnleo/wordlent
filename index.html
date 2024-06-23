@@ -6,53 +6,55 @@
     <title>Wordlen't</title>
 </head>
 <body>
-    <link rel="stylesheet" href="style.css">
+    <div class="general_container">
+        <link rel="stylesheet" href="style.css">
 
-    <div id="options_buttons"></div>
+        <div id="options_buttons"></div>
 
-    <div id="guesses" class="center">
-        <div class="container" id="row1">
+        <div id="guesses" class="center">
+            <div class="container" id="row1">
+            </div>
+            <div class="container"  id="row2">
+            </div>
+            <div class="container"  id="row3">
+            </div>
+            <div class="container" id="row4">
+            </div>
+            <div class="container" id="row5">
+            </div>
+            <div class="container" id="row6">
+            </div>
+            
         </div>
-        <div class="container"  id="row2">
+
+        <div id="coverScreen">
+            
         </div>
-        <div class="container"  id="row3">
+
+        <div id="scoreModal" class="modal">
+            <div class="modalContent">
+                <p>The mystery word is</p>
+                <p id="mysteryWord">Mystery</p>
+                <p id="winLoseText">Win/Lose Text</p>
+
+            </div>
         </div>
-        <div class="container" id="row4">
+
+
+        <div id="keyboard" class="center">
+            <div id="top_row_kb">
+
+            </div>
+            <div id="mid_row_kb">
+
+            </div>
+            <div id="btm_row_kb">
+
+            </div>
         </div>
-        <div class="container" id="row5">
-        </div>
-        <div class="container" id="row6">
-        </div>
-        
+
+        <script type="module" src="Cursor.js"></script>
+        <script type="module" src="index.js"></script>
     </div>
-
-    <div id="coverScreen">
-        
-    </div>
-
-    <div id="scoreModal" class="modal">
-        <div class="modalContent">
-            <p>The mystery word is</p>
-            <p id="mysteryWord">Mystery</p>
-            <p id="winLoseText">Win/Lose Text</p>
-
-        </div>
-    </div>
-
-
-    <div id="keyboard" class="center">
-        <div id="top_row_kb">
-
-        </div>
-        <div id="mid_row_kb">
-
-        </div>
-        <div id="btm_row_kb">
-
-        </div>
-    </div>
-
-    <script type="module" src="Cursor.js"></script>
-    <script type="module" src="index.js"></script>
 </body>
 </html>
