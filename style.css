@@ -4,12 +4,6 @@ body {
     background: radial-gradient(circle, rgba(66, 73, 110, 0.895) 0%, rgba(6, 5, 43, 0.735) 100%);
 }
 
-.center {
-    display: inline-block;
-    width: 50%;
-    padding: 10px;
-}
-
 #keyboard {
     margin-top: 1%;
 }
@@ -40,7 +34,7 @@ body {
 }
 
 @keyframes turn_to_yellow {
-    from {background-color: azure;}
+    from {background-color: azure;} 
     to {background-color: #DED43F;}
 }
 
@@ -224,7 +218,37 @@ body.light-mode {
     display: inline-block;
     position: absolute;
     top: 2rem;
-    right: 15rem;
+    right: 5rem;
     text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.662);
 }
 
+@media (max-width: 650px) {
+    .container {
+        gap: 4px;
+    }
+}
+
+@media (max-width: 550px) {
+    .guess_box {
+        height: 2.0rem;
+        width: 2.0rem;
+        padding: 0.438rem;
+        margin: 0.625rem;
+        border-radius: 0.313rem;
+        font-size: 1.8rem;
+    }
+
+
+    button {
+        padding: 0.8rem;
+        margin: 0.125rem;
+        margin-top: 0.625rem;
+        font-size: 0.9rem;
+
+        font-weight: bold;
+        color: #95bfc7;
+        background-color: #301A4B;
+        border-radius: 0.313rem;
+        border: none;
+    }
+}
