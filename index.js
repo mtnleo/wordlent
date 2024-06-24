@@ -19,6 +19,10 @@ async function getJson() {
     return words
 }
 
+document.getElementById("dark_light_mode").onclick =() => {
+    changeMode();
+}
+
 
 // building the keyboard ---------------------------
 let i = 0;
@@ -188,14 +192,14 @@ function changeMode() {
     light_mode = !light_mode;
 }
 
-let newOptionButton = document.createElement("text");
-newOptionButton.setAttribute("id", "dark_light_mode");
-newOptionButton.onclick = () => changeMode();
-let nodeOptionButton = document.createTextNode("🌕");
-newOptionButton.appendChild(nodeOptionButton);
+// let newOptionButton = document.createElement("text");
+// newOptionButton.setAttribute("id", "dark_light_mode");
+// newOptionButton.onclick = () => changeMode();
+// // let nodeOptionButton = document.createTextNode("🌕");
+// // newOptionButton.appendChild(nodeOptionButton);
 
-let options_div = document.getElementById("options_buttons");
-options_div.appendChild(newOptionButton);
+// let options_div = document.getElementById("options_buttons");
+// options_div.appendChild(newOptionButton);
 
 
 

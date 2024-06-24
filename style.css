@@ -4,7 +4,18 @@ body {
     background: radial-gradient(circle, rgba(66, 73, 110, 0.895) 0%, rgba(6, 5, 43, 0.735) 100%);
 }
 
-.general_container {
+
+nav {
+    height: 6rem;
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+a,
+#options_buttons {
+    padding-top: 1rem;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.662);
 }
 
 #keyboard {
@@ -217,13 +228,6 @@ body.light-mode {
     cursor: pointer;
 }
 
-#options_buttons {
-    display: inline-block;
-    position: absolute;
-    top: 2rem;
-    right: 5rem;
-    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.662);
-}
 
 @media (max-width: 1000px) {
     .modal {
@@ -234,11 +238,6 @@ body.light-mode {
 @media (max-width: 650px) {
     .container {
         gap: 4px;
-    }
-
-    #options_buttons {
-        top: 2rem;
-        right: 2.5rem;
     }
 }
 
@@ -259,10 +258,6 @@ body.light-mode {
         font-size: 0.9rem;
     }
 
-    #options_buttons {
-        top: 2rem;
-        right: 1.5rem;
-    }
 }
 
 @media (max-width: 450px) {
@@ -284,11 +279,5 @@ body.light-mode {
         margin: 0.1rem;
         margin-top: 0.625rem;
         font-size: 0.9rem;
-    }
-
-    #options_buttons {
-        display: none;
-        top: 2rem;
-        right: 2.5rem;
     }
 }
