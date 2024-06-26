@@ -16,10 +16,12 @@ async function getJson() {
     const response = await fetch("words.json");
     const words = await response.json();
 
-    return words
+    console.log(words);
+    return words;
 }
 
-document.getElementById("dark_light_mode").onclick =() => {
+document.getElementById("dark_light_mode").onclick = () => {
+    
     changeMode();
 }
 
@@ -213,45 +215,49 @@ function changeMode() {
 
 
 // fetch to an api
-const api_url = 'https://random-words5.p.rapidapi.com/getRandom?wordLength=5';
+// const api_url = 'https://random-words5.p.rapidapi.com/getRandom?wordLength=5';
+// let mysteryWord = null;
+
+// const options = {
+// 	method: 'GET',
+// 	headers: {
+// 		'X-RapidAPI-Key': '',
+// 		'X-RapidAPI-Host': 'random-words5.p.rapidapi.com'
+// 	}
+// };
+
+// const getApi = async(api_url) => {
+//     try {
+//         let exists = false;
+//         while (!exists) {
+//             const response = await fetch(api_url, options);
+//             const result = await response.text();
+//             mysteryWord = result;  
+
+//             if(allowedWords.includes(mysteryWord)) {
+//                 exists = true;
+//             }
+//         }
+//     }
+//     catch (error) {
+//         console.error("Error retrieving API: ", error);
+//     }
+// }
+
+// document.addEventListener("DOMContentLoaded", getApi(api_url));
 let mysteryWord = null;
 
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'e8c30f1820mshc210abe883c5745p10fa00jsn57b3fbae7da2',
-		'X-RapidAPI-Host': 'random-words5.p.rapidapi.com'
-	}
-};
-
-const getApi = async(api_url) => {
-    try {
-        let exists = false;
-        while (!exists) {
-            const response = await fetch(api_url, options);
-            const result = await response.text();
-            mysteryWord = result;  
-
-            if(allowedWords.includes(mysteryWord)) {
-                exists = true;
-            }
-        }
-    }
-    catch (error) {
-        console.error("Error retrieving API: ", error);
-    }
+function getNewWord() {
+    mysteryWord = allowedWords[Math.floor(Math.random() * allowedWords.length)];
+    console.log(mysteryWord);
 }
-
-document.addEventListener("DOMContentLoaded", getApi(api_url));
-
 
 function getMysteryWord() {
     return mysteryWord;
 }
 
-// get if word exists
+document.addEventListener("DOMContentLoaded", getNewWord());
 
-//
 
 function splitMysteryWordArray(mysteryWord) {
     let mysteryWordArray = new Array();
