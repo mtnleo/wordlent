@@ -6,7 +6,7 @@ import {Cursor} from "./Cursor.js"
 const allowedWords = await getJson();
 const keyboard = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", " ",
                  "a", "s", "d", "f", "g", "h", "j", "k", "l", " ",
-                 "Enter", "z", "x", "c", "v", "b", "n", "m", "Remove", " "];
+                 "Remove", "z", "x", "c", "v", "b", "n", "m", "Enter", " "];
 const containers = ["top_row_kb", "mid_row_kb", "btm_row_kb"];
 
 const cursor = new Cursor();
@@ -34,15 +34,39 @@ keyboard.forEach(element => {
         i++;
     }
     else {
-        
-        let newButton = document.createElement("button");
-        newButton.setAttribute("id", element);
-        newButton.onclick = () => reply_click(element);
-        let nodeButton = document.createTextNode(element.toUpperCase());
-        newButton.appendChild(nodeButton);
+        if (element !== "Enter" && element !== "Remove") {
+            let newButton = document.createElement("button");
+            newButton.setAttribute("id", element);
+            newButton.onclick = () => reply_click(element);
+            let nodeButton = document.createTextNode(element.toUpperCase());
+            newButton.appendChild(nodeButton);
 
-        let container = document.getElementById(containers[i]);
-        container.appendChild(newButton);
+            let container = document.getElementById(containers[i]);
+            container.appendChild(newButton);
+        }
+        else if (element === "Enter") {
+            let newButton = document.createElement("button");
+            newButton.setAttribute("id", element);
+            newButton.onclick = () => reply_click(element);
+            let nodeButton = document.createElement("i");
+            nodeButton.className = "fa-solid fa-right-to-bracket";
+            newButton.appendChild(nodeButton);
+
+            let container = document.getElementById(containers[i]);
+            container.appendChild(newButton);
+        }
+        else {
+            let newButton = document.createElement("button");
+            newButton.setAttribute("id", element);
+            newButton.onclick = () => reply_click(element);
+            let nodeButton = document.createElement("i");
+            nodeButton.className = "fa-solid fa-delete-left";
+            newButton.appendChild(nodeButton);
+
+            let container = document.getElementById(containers[i]);
+            container.appendChild(newButton);
+        }
+        
     }
 });
 // ------------------------------
