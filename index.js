@@ -249,7 +249,6 @@ let mysteryWord = null;
 
 function getNewWord() {
     mysteryWord = allowedWords[Math.floor(Math.random() * allowedWords.length)];
-    console.log(mysteryWord);
 }
 
 function getMysteryWord() {

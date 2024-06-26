@@ -6,16 +6,24 @@ body {
 
 
 nav {
-    height: 6rem;
+    height: 4rem;
+    margin-bottom: 1rem;
+    
     display: flex;
+    align-items: center;
     justify-content: end;
     gap: 10px;
 }
 
-a,
-#options_buttons {
-    padding-top: 1rem;
+a {
     text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.662);
+    padding-right: 10px;
+    font-size: 16px;
+}
+
+#dark_light_mode {
+    font-size: 31px;
+    cursor: pointer;
 }
 
 #keyboard {
@@ -220,14 +228,6 @@ body.light-mode {
 
 
 
-#dark_light_mode {
-    font-size: xx-large;
-}
-
-#dark_light_mode:hover {
-    cursor: pointer;
-}
-
 
 @media (max-width: 1000px) {
     .modal {
@@ -260,22 +260,44 @@ body.light-mode {
 
 }
 
-@media (max-width: 450px) {
+@media (max-width: 472px) {
     .guess_box {
-        height: 1.5rem;
-        width: 1.5rem;
+        height: 2rem;
+        width: 2rem;
         padding: 0.438rem;
         margin: 0.625rem;
         border-radius: 0.313rem;
-        font-size: 1.35rem;
+        font-size: 1.8rem;
     }
 
     .container {
-        gap: 2px;
+        gap: 0px;
     }
 
     button {
-        padding: 0.5rem;
+        padding: 0.6rem;
+        margin: 0.1rem;
+        margin-top: 0.625rem;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 405px) {
+    .guess_box {
+        height: 1.9rem;
+        width: 1.9rem;
+        padding: 0.438rem;
+        margin: 0.625rem;
+        border-radius: 0.313rem;
+        font-size: 1.8rem;
+    }
+
+    .container {
+        gap: 0px;
+    }
+
+    button {
+        padding: 0.6rem;
         margin: 0.1rem;
         margin-top: 0.625rem;
         font-size: 0.9rem;
