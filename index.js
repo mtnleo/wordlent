@@ -173,7 +173,7 @@ function reply_click(e) {
                 document.getElementById("r" + curRow + "c" + i).style.animationFillMode = 'forwards'; //animation
 
                 document.getElementById("r" + curRow + "c" + i).style.animationName = 'turn_to_azure'; //green
-                document.getElementById("r" + curRow + "c" + i).style.animationDuration = '2s'; //animation
+                document.getElementById("r" + curRow + "c" + i).style.animationDuration = '1s'; //animation
                 document.getElementById("r" + curRow + "c" + i).style.animationFillMode = 'forwards'; //animation
             }
         }
