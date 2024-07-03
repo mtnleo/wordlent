@@ -1,6 +1,8 @@
 // importing the Cursor class to control the keyboard and guesses
 import {Cursor} from "./Cursor.js"
-// Words credit: CFreshman on GitHub: <script src="https://gist.github.com/cfreshman/a7b776506c73284511034e63af1017ee.js"></script>
+// Words credit: CFreshman on GitHub: gist.github.com/cfreshman/a7b776506c73284511034e63af1017ee.js
+// Words credit in spanish: wordleespanol.org
+
 
 
 const allowedWords = await getJson();
