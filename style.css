@@ -1,5 +1,6 @@
 body { 
     text-align: center;
+    margin: 0px;
     font-family: "Roboto";
     background: radial-gradient(circle, rgba(66, 73, 110, 0.895) 0%, rgba(6, 5, 43, 0.735) 100%);
 }
