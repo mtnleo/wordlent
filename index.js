@@ -18,7 +18,6 @@ async function getJson() {
     const response = await fetch("words.json");
     const words = await response.json();
 
-    console.log(words);
     return words;
 }
 
@@ -177,6 +176,13 @@ function reply_click(e) {
                 document.getElementById("r" + curRow + "c" + i).style.animationName = 'turn_to_azure'; //green
                 document.getElementById("r" + curRow + "c" + i).style.animationDuration = '1s'; //animation
                 document.getElementById("r" + curRow + "c" + i).style.animationFillMode = 'forwards'; //animation
+
+
+                setTimeout(() => {
+                    document.getElementById("r" + curRow + "c" + i).style.animationName = ''; //green
+                    document.getElementById("r" + curRow + "c" + i).style.animationDuration = ''; //animation
+                    document.getElementById("r" + curRow + "c" + i).style.animationFillMode = ''; //animation
+                }, 1000)
             }
         }
     }

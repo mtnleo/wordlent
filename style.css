@@ -1,3 +1,7 @@
+/* **************************************** */
+/* *************** MAIN CSS *************** */
+/* **************************************** */
+
 body { 
     text-align: center;
     margin: 0px;
@@ -5,6 +9,14 @@ body {
     background: radial-gradient(circle, rgba(66, 73, 110, 0.895) 0%, rgba(6, 5, 43, 0.735) 100%);
 }
 
+
+.main-content {
+    height: 80dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 nav {
     height: 4rem;
@@ -38,18 +50,96 @@ a {
 }
 
 .guess_box {
-    height: 2.5rem;
-    width: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 3.5rem;
+    width: 3.5rem;
     padding: 0.438rem;
-    margin: 0.625rem;
+    margin: 0.5rem;
     border-radius: 0.313rem;
 
     background-color: azure;
 
     font-weight: bolder;
-    font-size: 2.1rem;
+    font-size: 2.4rem;
 }
 
+button {/*
+    display: flex;
+    align-items: center;
+    justify-content: center;
+*/
+    padding: 1.2rem;
+    margin: 0.125rem;
+    margin-top: 0.625rem;
+    font-size: 1.5rem;
+
+    font-weight: bold;
+    color: #95bfc7;
+    background-color: #301A4B;
+    border-radius: 0.313rem;
+    border: none;
+}
+
+
+
+.modal {
+    display: none;
+    justify-content: center;
+
+    position:absolute;
+    z-index: 1;
+    overflow: auto;
+    left: 37.5%;
+    top: 10%;
+    width: 25%;
+    height: 45%;
+    background-color: #1d0f2e;
+
+    border-radius: 1.875rem;
+    box-shadow: 0px 0px 20px;
+}
+
+.modalContent {
+    margin: 10% auto;
+    margin-top: 28%;
+    padding: 1rem;
+
+    font-family: "Roboto";
+    color: azure;
+    font-size: large;
+    font-weight: bold;
+    
+}
+
+.modalContent #mysteryWord {
+    font-size:x-large;
+    font-weight:bolder;
+}
+
+.modalContent #winLoseText {
+    margin-top: 2rem;
+    font-family: "Roboto";
+    color: rgb(56, 110, 246);
+    font-size:xx-large;
+    font-weight:bolder;
+}
+
+
+body.dark-mode {
+    animation: set_to_dark_mode 2s linear forwards;
+}
+
+body.light-mode {
+    animation: set_to_light_mode 2s linear forwards;
+}
+
+
+/* ***************************************** */
+/* *************** KEYFRAMES *************** */
+/* ***************************************** */
 
 @keyframes turn_to_green {
     from {background-color: azure;}
@@ -74,19 +164,6 @@ a {
 @keyframes turn_to_azure {
     from {background-color: #ff3434;}
     to {background-color: azure;}
-}
-
-button {
-    padding: 0.938rem;
-    margin: 0.125rem;
-    margin-top: 0.625rem;
-    font-size: 1.1rem;
-
-    font-weight: bold;
-    color: #95bfc7;
-    background-color: #301A4B;
-    border-radius: 0.313rem;
-    border: none;
 }
 
 @keyframes color_change_hover_on {
@@ -134,48 +211,6 @@ button:not(:hover) {
 }
 
 
-.modal {
-    display: none;
-    justify-content: center;
-
-    position:absolute;
-    z-index: 1;
-    overflow: auto;
-    left: 37.5%;
-    top: 10%;
-    width: 25%;
-    height: 45%;
-    background-color: #1d0f2e;
-
-    border-radius: 1.875rem;
-    box-shadow: 0px 0px 20px;
-}
-
-.modalContent {
-    margin: 10% auto;
-    margin-top: 28%;
-    padding: 1rem;
-
-    font-family: "Roboto";
-    color: azure;
-    font-size: large;
-    font-weight: bold;
-    
-}
-
-.modalContent #mysteryWord {
-    font-size:x-large;
-    font-weight:bolder;
-}
-
-.modalContent #winLoseText {
-    margin-top: 2rem;
-    font-family: "Roboto";
-    color: rgb(56, 110, 246);
-    font-size:xx-large;
-    font-weight:bolder;
-}
-
 @keyframes animate_top {
     from {top: -300px; opacity: 0}
     to {top: 10%; opacity: 1}
@@ -219,16 +254,10 @@ button:not(:hover) {
         }
 }
 
-body.dark-mode {
-    animation: set_to_dark_mode 2s linear forwards;
-}
 
-body.light-mode {
-    animation: set_to_light_mode 2s linear forwards;
-}
-
-
-
+/* ********************************************* */
+/* *************** MEDIA QUERIES *************** */
+/* ********************************************* */
 
 @media (max-width: 1000px) {
     .modal {
@@ -242,12 +271,10 @@ body.light-mode {
     }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 600px) {
     .guess_box {
         height: 2.0rem;
         width: 2.0rem;
-        padding: 0.438rem;
-        margin: 0.625rem;
         border-radius: 0.313rem;
         font-size: 1.8rem;
     }
@@ -265,8 +292,6 @@ body.light-mode {
     .guess_box {
         height: 2rem;
         width: 2rem;
-        padding: 0.438rem;
-        margin: 0.625rem;
         border-radius: 0.313rem;
         font-size: 1.8rem;
     }
@@ -287,8 +312,6 @@ body.light-mode {
     .guess_box {
         height: 1.9rem;
         width: 1.9rem;
-        padding: 0.438rem;
-        margin: 0.625rem;
         border-radius: 0.313rem;
         font-size: 1.8rem;
     }
@@ -309,8 +332,6 @@ body.light-mode {
     .guess_box {
         height: 1.6rem;
         width: 1.6rem;
-        padding: 0.438rem;
-        margin: 0.625rem;
         border-radius: 0.313rem;
         font-size: 1.8rem;
     }
