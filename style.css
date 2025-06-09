@@ -87,15 +87,16 @@ button {/*
 
 .modal {
     display: none;
-    justify-content: center;
 
-    position:absolute;
+
+    position: absolute;
     z-index: 1;
     overflow: auto;
-    left: 37.5%;
+    left: auto;
+    right: auto;
     top: 10%;
-    width: 25%;
-    height: 45%;
+    width: 40rem;
+    height: 30rem;
     background-color: #1d0f2e;
 
     border-radius: 1.875rem;
@@ -103,30 +104,44 @@ button {/*
 }
 
 .modalContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     margin: 10% auto;
-    margin-top: 28%;
     padding: 1rem;
 
-    font-family: "Roboto";
     color: azure;
-    font-size: large;
+    font-size: 30px;
     font-weight: bold;
     
 }
 
-.modalContent #mysteryWord {
-    font-size:x-large;
-    font-weight:bolder;
+.mystery-word-presentation {
+    margin-bottom: 20px;
 }
 
-.modalContent #winLoseText {
-    margin-top: 2rem;
-    font-family: "Roboto";
+#mysteryWord {
+    font-size: 50px;
+    font-weight:bolder;
+    margin: 0px;
+}
+
+#winLoseText {
     color: rgb(56, 110, 246);
     font-size:xx-large;
     font-weight:bolder;
 }
 
+.modalContent a {
+    background-color: #483065;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+
+}
 
 body.dark-mode {
     animation: set_to_dark_mode 2s linear forwards;
@@ -261,11 +276,17 @@ button:not(:hover) {
 
 @media (max-width: 1000px) {
     .modal {
-        width: 45%;
+        height: 25rem;
+        width: 25rem;
     }
 }
 
+
 @media (max-width: 650px) {
+    .modal {
+        width: 20rem;
+    }
+
     .container {
         gap: 4px;
     }
